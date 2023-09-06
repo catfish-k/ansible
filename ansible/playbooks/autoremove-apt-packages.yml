@@ -1,0 +1,17 @@
+- hosts: all
+
+  become: yes
+  tasks:
+    # Upgrade packages
+    - name: Autoremote unused apt packages
+      become: true
+      apt:
+        autoremove: yes
+      register: result.changed
+    - set_fact:
+        pkgs_removed: "{{ result.stdout_lines|
+                         select('regex', '^Removing (.*)$')|
+                         map('regex_replace', '^(.*?) (.*?) (.*)$', '\\2')|
+                         list }}"
+    -debug:
+      var: pkgs_removed
