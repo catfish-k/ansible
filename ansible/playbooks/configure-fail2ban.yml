@@ -12,15 +12,12 @@
     copy:
       dest: "/etc/fail2ban/jail.local"
       content: |
-        ignoreip = 10.11.0.0/24
-        bantime = 10m
-        findtime = 10m
-        maxretry = 5
-        action = $(action_)s
-        [sshd]
-        enabled = yes
-        mode    = normal
-        port    = ssh
+       [sshd]
+       enabled   = true
+       maxretry  = 3
+       findtime  = 10m
+       bantime   = 30m
+       ignoreip  = 10.11.0.0/24
   - name: start fail2ban
     become: true
     service:
