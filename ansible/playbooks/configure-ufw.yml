@@ -12,9 +12,8 @@
     community.general.ufw:
       rule: allow
       name: OpenSSH
-  - name: start ufw
+  - name: start ufw, enable and deny by default
     become: true
-    service:
-      name: ufw
-      state: started
-      enabled: yes
+    community.general.ufw:
+      state: enabled
+      default: deny
