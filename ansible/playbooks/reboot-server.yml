@@ -1,0 +1,9 @@
+- hosts: all
+
+  tasks:
+
+    - name: Reboot the machine (wait for 5 min)
+      remote_user: administrator
+      become: true
+      reboot:
+        reboot_timeout: 300
