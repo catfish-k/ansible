@@ -13,5 +13,5 @@
                          select('regex', '^Removing (.*)$')|
                          map('regex_replace', '^(.*?) (.*?) (.*)$', '\\2')|
                          list }}"
-    -debug:
+    - debug:
       var: pkgs_removed
