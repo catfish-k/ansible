@@ -1,0 +1,19 @@
+- hosts: all
+
+  tasks:
+  - name: Create default fail2ban configuration
+    copy:
+      dest: "/etc/fail2ban/jail.local"
+      content: |
+        bantime = 10m
+        findtime = 10m
+        maxretry = 5
+        action = $(action_)s
+        [sshd]
+        enabled = yes
+        mode    = normal
+        port    = ssh
+        logpath = %(sshd_log)s
+        backend = %(sshd_backend)s
+    become: yes
+
