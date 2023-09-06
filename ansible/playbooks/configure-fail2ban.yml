@@ -12,6 +12,7 @@
     copy:
       dest: "/etc/fail2ban/jail.local"
       content: |
+        ignoreip = 10.11.0.0/24
         bantime = 10m
         findtime = 10m
         maxretry = 5
@@ -20,8 +21,6 @@
         enabled = yes
         mode    = normal
         port    = ssh
-        logpath = %(sshd_log)s
-        backend = %(sshd_backend)s
   - name: start fail2ban
     become: true
     service:
