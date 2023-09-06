@@ -12,6 +12,7 @@
     copy:
       dest: "/etc/fail2ban/jail.local"
       content: |
+       backend = systemd
        [sshd]
        enabled   = true
        maxretry  = 3
