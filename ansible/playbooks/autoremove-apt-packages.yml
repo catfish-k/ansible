@@ -1,17 +1,16 @@
 - hosts: all
 
-  become: yes
-  tasks:
-    # Upgrade packages
-    - name: Autoremote unused apt packages
-      become: true
-      apt:
-        autoremove: yes
-      register: result.changed
-    - set_fact:
-        pkgs_removed: "{{ result.stdout_lines|
-                         select('regex', '^Removing (.*)$')|
-                         map('regex_replace', '^(.*?) (.*?) (.*)$', '\\2')|
-                         list }}"
-    - debug:
-      var: pkgs_removed
+  pre_tasks:
+    - name: apt autoremove check 
+      command: apt-get -y --dry-run autoremove
+      register: apt_autoremove_output
+
+    - name: print apt autoremove packages
+      debug:
+        msg: "{{ apt_autoremove_output.stdout_lines }}"
+
+  tasks:    
+    - name: autoremove unused packages
+      become: yes
+      command: apt-get -y autoremove
+      changed_when: "'The following packages will be REMOVED' in apt_autoremove_output.stdout"
