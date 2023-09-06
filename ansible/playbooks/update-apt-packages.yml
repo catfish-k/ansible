@@ -4,7 +4,6 @@
   tasks:
     # Upgrade packages
     - name: upgrade apt packages
-      remote_user: administrator
       sudo: yes
       apt:
         upgrade: yes
@@ -12,7 +11,6 @@
 
     # Check if reboot is required
     - name: check if system reboot is required
-      remote_user: administrator
       sudo: yes
       stat:
         path: /var/run/reboot-required
