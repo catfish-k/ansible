@@ -9,9 +9,10 @@
         - qemu-guest-agent
         - ssh
         - vim
+        - wget
+        - speedtest-cli
         - netplan.io
         - tzdata
-        - ufw
       update_cache: yes
 
   - name: start guest qemu-guest-agent
