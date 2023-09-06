@@ -1,7 +1,7 @@
 - hosts: all
 
   tasks:
-    - name: Reboot the machine (wait for 5 min)
+    - name: Power off the machine
       become: true
-      shutdown:
-        delay: 3
+      community.general.shutdown:
+       delay: 3
