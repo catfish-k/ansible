@@ -2,11 +2,13 @@
 
   tasks:
   - name: install fail2ban package
+    become: true
     apt:
       name:
         - fail2ban
       update_cache: yes
   - name: create default fail2ban configuration
+    become: true
     copy:
       dest: "/etc/fail2ban/jail.local"
       content: |
@@ -20,8 +22,8 @@
         port    = ssh
         logpath = %(sshd_log)s
         backend = %(sshd_backend)s
-    become: yes
   - name: start fail2ban
+    become: true
     service:
       name: fail2ban
       state: started
