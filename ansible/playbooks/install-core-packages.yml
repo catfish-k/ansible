@@ -10,6 +10,9 @@
         - ssh
         - vim
         - netplan.io
+        - tzdata
+        - fail2ban
+        - ufw
       update_cache: yes
 
   - name: start guest qemu-guest-agent
