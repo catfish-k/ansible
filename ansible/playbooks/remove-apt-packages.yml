@@ -2,7 +2,7 @@
 
   pre_tasks:
     - name: apt remove check 
-      command: apt -y --dry-run remove ubuntu-advantage-tools cloud-init
+      command: apt remove -y --dry-run ubuntu-advantage-tools cloud-init
       register: apt_remove_output
 
     - name: print apt remove packages
@@ -10,11 +10,11 @@
         msg: "{{ apt_remove_output.stdout_lines }}"
 
   tasks:    
-    - name: remove unused packages
+    - name: remove unwanted packages
       become: yes
-      command: apt -y remove ubuntu-advantage-tools cloud-init 
+      command: apt remove -y --purge ubuntu-advantage-tools cloud-init 
       changed_when: "'The following packages will be REMOVED' in apt_remove_output.stdout"
 
-    - name: remove cruft
+    - name: remove configuration folders
       become: yes
       command: rm -rf /etc/cloud
