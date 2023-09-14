@@ -8,10 +8,12 @@
         - fail2ban
       update_cache: yes
   - name: set ssh backend to systemd
-    ansible.builtin.lineinfile:
-    path: /etc/fail2ban/jail.conf
-    regexp: '^backend ='
-    line: backend = systemd
+    become: true
+    lineinfile:
+      path: /etc/fail2ban/jail.conf
+      regexp: '^backend ='
+      line: backend = systemd
+      backrefs: yes
   - name: create default fail2ban configuration
     become: true
     copy:
