@@ -29,5 +29,5 @@
     become: true
     service:
       name: fail2ban
-      state: started
+      state: restarted
       enabled: yes
