@@ -14,7 +14,7 @@
       regexp: '^backend = auto'
       line: backend = systemd
       backrefs: yes
-  - name: create default fail2ban configuration
+  - name: create default fail2ban ssh configuration
     become: true
     copy:
       dest: "/etc/fail2ban/jail.local"
