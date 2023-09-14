@@ -13,6 +13,7 @@
         - speedtest-cli
         - netplan.io
         - tzdata
+        - btop
       update_cache: yes
 
   - name: start guest qemu-guest-agent
