@@ -11,12 +11,14 @@
     become: true
     community.general.ufw:
       rule: allow
-      name: OpenSSH
+      port: 22
+      proto: tcp
   - name: allow snmp in ufw
     become: true
     community.general.ufw:
       rule: allow
-      name: snmp
+      port: 161
+      proto: udp
   - name: start ufw, enable and deny by default
     become: true
     community.general.ufw:
