@@ -12,6 +12,11 @@
     community.general.ufw:
       rule: allow
       name: OpenSSH
+  - name: allow snmp in ufw
+    become: true
+    community.general.ufw:
+      rule: allow
+      name: snmp
   - name: start ufw, enable and deny by default
     become: true
     community.general.ufw:
