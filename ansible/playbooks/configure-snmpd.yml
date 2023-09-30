@@ -37,6 +37,11 @@
       regexp: '^rocommunity  public default -V systemonly'
       line: 'rocommunity  public 10.11.0.40'
       backrefs: yes
+  - name: enable snmpd
+    become: true
+    ansible.builtin.service:
+      name: snmpd
+      enabled: yes
   - name: start snmpd
     become: true
     service:
