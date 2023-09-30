@@ -14,9 +14,6 @@
         - netplan.io
         - tzdata
         - btop
-        - snmp
-        - snmpd
-        - libsnmp-dev
       update_cache: yes
 
   - name: start guest qemu-guest-agent
