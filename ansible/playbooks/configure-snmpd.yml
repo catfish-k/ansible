@@ -14,28 +14,28 @@
     lineinfile:
       path: /etc/snmp/snmpd.conf
       regexp: '^sysLocation    Sitting on the Dock of the Bay'
-      line: sysLocation    ROBONet.io, Portland ORE
+      line: 'sysLocation    ROBONet.io, Portland ORE'
       backrefs: yes
   - name: set snmpd contact info
     become: true
     lineinfile:
       path: /etc/snmp/snmpd.conf
       regexp: '^sysContact     Me <me@example.org>'
-      line: sysContact     Admin <admin@robonet.io>
+      line: 'sysContact     Admin <admin@robonet.io>'
       backrefs: yes
   - name: set snmpd listen address
     become: true
     lineinfile:
       path: /etc/snmp/snmpd.conf
       regexp: '^agentaddress  127.0.0.1,[::1]'
-      line: agentaddress udp:161,udp6:[::1]:161
+      line: 'agentaddress udp:161,udp6:[::1]:161'
       backrefs: yes
   - name: set snmpd community strings
     become: true
     lineinfile:
       path: /etc/snmp/snmpd.conf
       regexp: '^rocommunity  public default -V systemonly'
-      line: rocommunity  public 10.11.0.40
+      line: 'rocommunity  public 10.11.0.40'
       backrefs: yes
   - name: start snmpd
     become: true
