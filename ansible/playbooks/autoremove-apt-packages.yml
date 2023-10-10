@@ -1,7 +1,8 @@
 - hosts: all
 
   pre_tasks:
-    - name: apt autoremove check 
+    - name: apt autoremove check
+      become: yes 
       command: apt-get -y --dry-run autoremove
       register: apt_autoremove_output
 
