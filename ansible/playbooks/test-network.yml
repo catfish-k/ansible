@@ -2,12 +2,10 @@
 - hosts: all
   become: false
   gather_facts: false
-
   tasks:
-
   - name: ICMP ping test to DNS servers
     delegate_to: localhost
-    command: ping -c 5 -w 2 1.0.0.1
+    command: ping -c 5 -w 2 "{{ inventory_hostname }}"
     changed_when: false 
     check_mode: false
     failed_when: router_ping.rc == 1 or router_ping.rc > 2
