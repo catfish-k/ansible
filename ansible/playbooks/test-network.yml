@@ -2,18 +2,10 @@
 
   tasks:
     - name: Test reachability to 8.8.4.4
-      ping:
-        dest: 10.10.10.10
-        count: 5
+      shell: ping -4 -c 5 -w 2 8.8.4.4
     - name: Test reachability to 1.0.0.1
-      ping:
-        dest: 10.20.20.20
-        count: 5
+      shell: ping 4 -c 5 -w 2 1.0.0.1
     - name: Test reachability to 2001:4860:4860::8844
-      ping:
-        dest: 2001:4860:4860::8844
-        count: 5
+      shell: ping -6 -c 5 -w 2 2001:4860:4860::8844
     - name: Test reachability to 2606:4700:4700::1001
-      ping:
-        dest: 2606:4700:4700::1001
-        count: 5
+      shell: ping -6 -c 5 -w 2 2606:4700:4700::1001
