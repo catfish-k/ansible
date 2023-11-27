@@ -26,6 +26,10 @@
     debug:
       msg: "Successfully pinged Google Public DNS at 2001:4860:4860::8844"
 
-  - name: Simple A record (IPV4 address) lookup for ipchicken.com
+  - name: Look up A (IPv4) records for ipchicken.com
     ansible.builtin.debug:
-      msg: "{{ lookup('community.general.dig', 'ipchicken.com.')}}"
+      msg: "{{ query('community.dns.lookup', 'ipchicken.com.') }}"
+
+  - name: Look up AAAA (IPv6) records for ipchicken.com
+    ansible.builtin.debug:
+      msg: "{{ query('community.dns.lookup', 'ipchicken.com.', type='AAAA' ) }}"
