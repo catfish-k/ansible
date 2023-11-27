@@ -3,7 +3,7 @@
   become: false
   gather_facts: false
   tasks:
-  - name: ICMP ping test to ansible server
+  - name: ICMP ping test to DNS server
     delegate_to: localhost
     command: ping -c 2 "1.0.0.1"
     changed_when: false 
@@ -13,4 +13,4 @@
 
   - name: Show Return Code
     debug:
-      msg: "{{ router_ping.rc }}"
+      msg: "Successfully pinged 1.0.0.1"
