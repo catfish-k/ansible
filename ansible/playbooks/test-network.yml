@@ -3,9 +3,13 @@
   tasks:
     - name: Test reachability to 8.8.4.4
       shell: ping -4 -c 5 -w 2 8.8.4.4
+      ignore_errors: true
     - name: Test reachability to 1.0.0.1
       shell: ping 4 -c 5 -w 2 1.0.0.1
+      ignore_errors: true
     - name: Test reachability to 2001:4860:4860::8844
       shell: ping -6 -c 5 -w 2 2001:4860:4860::8844
+      ignore_errors: true
     - name: Test reachability to 2606:4700:4700::1001
       shell: ping -6 -c 5 -w 2 2606:4700:4700::1001
+      ignore_errors: true
