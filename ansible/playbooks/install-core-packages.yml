@@ -15,6 +15,7 @@
         - tzdata
         - btop
         - python3-dnspython
+        - iputils-ping
       update_cache: yes
 
   - name: start guest qemu-guest-agent
