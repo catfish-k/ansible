@@ -7,8 +7,7 @@
 
   - name: ICMP ping test to DNS servers
     delegate_to: localhost
-    command: ping -c 2 "{{ inventory_hostname }}"
-    # Because it is an reporting task
+    command: ping -c 5 -w 2 -w 1.0.0.1
     changed_when: false 
     check_mode: false
     failed_when: router_ping.rc == 1 or router_ping.rc > 2
