@@ -16,6 +16,8 @@
         - btop
         - python3-dnspython
         - iputils-ping
+        - apt-utils
+        - dialog
       update_cache: yes
 
   - name: start guest qemu-guest-agent
