@@ -1,7 +1,7 @@
 - hosts: all
   tasks:
     - name: Get journalctl disk usage
-      command: journalctl --disk-usage | awk '{print}'
+      shell: journalctl --disk-usage | awk '{print}'
       register: journal_disk_usage
     - debug:
         var: journal_disk_usage.stdout_lines
