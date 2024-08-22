@@ -8,7 +8,7 @@
     - debug:
         var: journal_disk_usage.stdout_lines
     - name: Trim logs
-      shell: journalctl --vacuum-time=3d
+      shell: journalctl --vacuum-time=3d | awk '{print}'
       register: journal_vacuum
     - debug:
         var: journal_vacuum.stdout_lines
