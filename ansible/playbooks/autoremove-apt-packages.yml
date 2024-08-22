@@ -3,7 +3,7 @@
   pre_tasks:
     - name: apt autoremove check
       become: yes 
-      command: apt-get -y --dry-run autoremove
+      command: apt -y --dry-run autoremove
       register: apt_autoremove_output
 
     - name: print apt autoremove packages
@@ -13,5 +13,9 @@
   tasks:    
     - name: autoremove unused packages
       become: yes
-      command: apt-get -y autoremove
+      command: apt -y autoremove
       changed_when: "'The following packages will be REMOVED' in apt_autoremove_output.stdout"
+
+    - name: clean old packages
+      become: yes
+      command: apt -y clean
