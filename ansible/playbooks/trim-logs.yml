@@ -3,6 +3,10 @@
     - name: Get journalctl disk usage
       command: journalctl --disk-usage | awk '{print}'
       register: journal_disk_usage
+    - debug:
+        var: journal_disk_usage.stdout_lines
     - name: Trim logs
       shell: sudo journalctl --vacuum-time=3d
-      register: journal_disk_usage
+      register: journal_vacuum
+    - debug:
+        var: journal_vacuum.stdout_lines
