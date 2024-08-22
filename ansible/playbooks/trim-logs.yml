@@ -1,4 +1,6 @@
 - hosts: all
+
+  become: yes
   tasks:
     - name: Get journalctl disk usage
       shell: journalctl --disk-usage | awk '{print}'
@@ -6,7 +8,7 @@
     - debug:
         var: journal_disk_usage.stdout_lines
     - name: Trim logs
-      shell: sudo journalctl --vacuum-time=3d
+      shell: journalctl --vacuum-time=3d
       register: journal_vacuum
     - debug:
         var: journal_vacuum.stdout_lines
