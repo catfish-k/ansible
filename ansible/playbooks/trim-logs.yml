@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+    - name: Get journalctl disk usage
+      command: journalctl --disk-usage
+      register: journal_disk_usage
+    - name: Trim logs
+      shell: sudo journalctl --vacuum-time=3d
+      register: journal_disk_usage
