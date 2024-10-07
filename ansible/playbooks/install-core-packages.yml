@@ -10,6 +10,9 @@
         - ssh
         - vim
         - wget
+        - curl
+        - iputils-ping
+        - telnet
         - speedtest-cli
         - netplan.io
         - tzdata
@@ -18,6 +21,8 @@
         - iputils-ping
         - apt-utils
         - dialog
+        - terminfo
+        - kitty-terminfo
       update_cache: yes
 
   - name: start guest qemu-guest-agent
