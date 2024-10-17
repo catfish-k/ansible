@@ -12,6 +12,8 @@
         - wget
         - curl
         - iputils-ping
+        - tuned
+        - tuned-utils
         - telnet
         - speedtest-cli
         - netplan.io
